@@ -6,35 +6,47 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-def suche(element_css_selector, driver):
+def suche(element_css_selector, driver, typeElement):
     try:
         wait = WebDriverWait(driver, 15)  
         element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, element_css_selector)))
         href = element.get_attribute('href')
-        if href:
-            return href
+        
+
+
+        if typeElement == "text":
+            if element.text:
+                    text = element.text
+                    return text
+            else:
+                print("Element found, but it contains no data.")
+        elif typeElement == "href":
+            if href:
+                return href
+            else:
+                print("Element gefunden, aber es enthält keine href-Adresse.")
         else:
-            print("Element gefunden, aber es enthält keine href-Adresse.")
+             print("wrong type "+ typeElement)
     except Exception as e:
         print(f"Fehler: Das Element konnte nicht gefunden werden. {e}")
         return None
 
-def main():
+def main(artikel, type):
+    artikel.lower().replace(" ", "-")
     chrome_driver_path = "A:\\Desktop\\Scripts\\chromedriver.exe"
-    s = Service(executable_path=chrome_driver_path, log_path='NUL')  # Unterdrückt die WebDriver-Logs
+    s = Service(executable_path=chrome_driver_path, log_path='NUL')  
     
     chrome_options = uc.ChromeOptions()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument('--log-level=3')  # Setzt das Logging-Level auf Fehlermeldungen
+    chrome_options.add_argument('--log-level=3')  
 
     try:
         driver = uc.Chrome(service=s, options=chrome_options)
-        artikel = "apple-watch-ultra"
+        
         url = f"https://www.kleinanzeigen.de/s-anzeige:angebote/preis:500:750/{artikel}/k0"
         driver.get(url)
 
         element_css_selector = "#srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--middle > h2 > a"
-        result = suche(element_css_selector, driver)
+        result = suche(element_css_selector, driver, type)
         print(result)
     except Exception as e:
         print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
@@ -46,4 +58,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    main("apple watch ultra", "href") #either href or text 
