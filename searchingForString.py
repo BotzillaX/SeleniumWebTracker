@@ -5,11 +5,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import subprocess
 
 def suche(element_css_selector, driver):
     try:
-        wait = WebDriverWait(driver, 10)  # Wartezeit auf 10 Sekunden gesetzt
+        wait = WebDriverWait(driver, 15)  
         element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, element_css_selector)))
         href = element.get_attribute('href')
         if href:
@@ -23,11 +22,11 @@ def suche(element_css_selector, driver):
 def main():
     chrome_driver_path = "A:\\Desktop\\Scripts\\chromedriver.exe"
     s = Service(executable_path=chrome_driver_path, log_path='NUL')  # Unterdrückt die WebDriver-Logs
-
+    
     chrome_options = uc.ChromeOptions()
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument('--log-level=3')  # Setzt das Logging-Level auf Fehlermeldungen
 
-    driver = None
     try:
         driver = uc.Chrome(service=s, options=chrome_options)
         artikel = "apple-watch-ultra"
@@ -40,11 +39,11 @@ def main():
     except Exception as e:
         print(f"Ein unerwarteter Fehler ist aufgetreten: {e}")
     finally:
-        if driver:
-            driver.quit()
-            # Forcefully kill any remaining Chrome processes
-            subprocess.call(['taskkill', '/F', '/IM', 'chromedriver.exe'])
-            subprocess.call(['taskkill', '/F', '/IM', 'chrome.exe'])
+        driver.quit()
+
+
+
+
 
 if __name__ == "__main__":
     main()

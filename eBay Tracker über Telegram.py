@@ -56,33 +56,10 @@ def suche2(upper, Artikel):
     element_css_selector2 = "#srchrslt-adtable > li:nth-child("+str(upper)+") > article > div.aditem-main > div.aditem-main--middle > h2 > a"
     element_css_selector = "#srchrslt-adtable > li:nth-child("+str(upper)+") > article > div.aditem-main > div.aditem-main--middle > div.aditem-main--middle--price-shipping > p"
     element_css_selector3 = "#srchrslt-adtable > li:nth-child("+str(upper)+") > article > div.aditem-main > div.aditem-main--middle > p"
-    #top_or_not1 =#srchrslt-adtable > li:nth-child(2) > article > div.aditem-main > div.aditem-main--top > div.aditem-main--top--right
     top_or_not = "#srchrslt-adtable > li:nth-child("+str(upper)+") > article > div.aditem-main > div.aditem-main--top > div.aditem-main--top--right"
 
-#srchrslt-adtable > li.ad-listitem.lazyload-item.badge-topad.is-topad > article > div.aditem-main > div.aditem-main--top > div.aditem-main--top--right
-#srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--top > div.aditem-main--top--right
 
-    #preis liste 1
-    
-    ##srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--middle > h2 > a
-    ##srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--middle > div.aditem-main--middle--price-shipping > p"
-    ##srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--middle > p
-
-
-
-    #preis liste 2
-
-    ##srchrslt-adtable > li:nth-child(2) > article > div.aditem-main > div.aditem-main--middle > h2 > a
-    ##srchrslt-adtable > li:nth-child(2) > article > div.aditem-main > div.aditem-main--middle > div.aditem-main--middle--price-shipping > p
-    ##srchrslt-adtable > li:nth-child(2) > article > div.aditem-main > div.aditem-main--middle > p
-
-    #preis liste 3
-
-    ##srchrslt-adtable > li:nth-child(3) > article > div.aditem-main > div.aditem-main--middle > h2 > a
-    ##srchrslt-adtable > li:nth-child(3) > article > div.aditem-main > div.aditem-main--middle > div.aditem-main--middle--price-shipping > p
-    ##srchrslt-adtable > li:nth-child(3) > article > div.aditem-main > div.aditem-main--middle > p
-
-    wait = WebDriverWait(driver, 10)  # Increase the wait time to 30 seconds
+    wait = WebDriverWait(driver, 10) 
 
 
 
@@ -158,7 +135,7 @@ def erinnerung(anders, upper, Artikel):
                     bot.send_message(1432432083, "Preis: " + str(preis) + "€")
                     bot.send_message(1432432083, third)
                     bot.send_message(1432432083, "Link: " + url)
-                    bot.send_message(1432432083, "Bitte trage alle leeren Felder logisch selbst ein(ich bin Kevin Fritsch). Bitte kurz halten (8 Zeilen max). Schreibe mir eine Kaufanfrage zu einem Verkäufer zu folgenden Infos:"+ second + " " + third +" und Preis: " + str(preis) + "€")
+                    bot.send_message(1432432083, "Bitte trage alle leeren Felder logisch selbst ein(ich bin ...). Bitte kurz halten (8 Zeilen max). Schreibe mir eine Kaufanfrage zu einem Verkäufer zu folgenden Infos:"+ second + " " + third +" und Preis: " + str(preis) + "€")
                 
                     
 
@@ -184,7 +161,7 @@ def erinnerung(anders, upper, Artikel):
         bot.send_message(1432432083, second)
         bot.send_message(1432432083, third)
         bot.send_message(1432432083, "Link: " + url)
-        bot.send_message(1432432083, "Bitte trage alle leeren Felder logisch selbst ein(ich bin Kevin Fritsch). Bitte kurz halten (8 Zeilen max). Schreibe mir eine Kaufanfrage zu einem Verkäufer zu folgenden Infos:"+ second + " " + third +" und Preis: " + str(preis) + "€")
+        bot.send_message(1432432083, "Bitte trage alle leeren Felder logisch selbst ein(ich bin ...). Bitte kurz halten (8 Zeilen max). Schreibe mir eine Kaufanfrage zu einem Verkäufer zu folgenden Infos:"+ second + " " + third +" und Preis: " + str(preis) + "€")
 
 
 
