@@ -26,7 +26,7 @@ def suche(element_css_selector, driver, typeElement):
         return None
     try:
         wait = WebDriverWait(driver, 10)  # Adjust wait time as needed
-        element = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "#srchrslt-adtable > li:nth-child(1) > article > div.aditem-main > div.aditem-main--middle > div.aditem-main--middle--price-shipping > p")))
+        element = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,element_css_selector )))
         href = element.get_attribute('href')
 
         if typeElement == "text":

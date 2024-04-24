@@ -1,5 +1,8 @@
 from searchingForString import main
 from openBrowser import openBrowser1
+from pixelDetection import lookingForPixel
+from time import sleep
+from pyautogui import click
 
 Wunschpreis = 4600
 chrome_driver_path = "A:\\Desktop\\Scripts\\chromedriver.exe"
@@ -28,7 +31,20 @@ while price > Wunschpreis:
 
 urlHref = main(url,"href", currentURLfrommSelector,  chrome_driver_path)
 openBrowser1(urlHref)
-            
+sleep(1)
+val = lookingForPixel("message")[1]
+while val < 0.90:
+    val = lookingForPixel("message")[1]
+    sleep(0.1)
+x, y = lookingForPixel("message")[0]
+click(x, y)            
+    
+sleep(1)
+while lookingForPixel("textField")[1] < 0.90:
+    lookingForPixel("textField")[1]
+    sleep(0.1)
+x, y = lookingForPixel("textField")[0]
+click(x, y)            
     
     
     
