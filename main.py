@@ -4,6 +4,7 @@ from pixelDetection import lookingForPixel
 from time import sleep
 from pyautogui import click
 import json
+from keyboard import press_and_release
 
 with open("C:\\Users\\kevin\\Dropbox\\Kundenwunsch\\Wagner An- und Verkauf\\Kundenwunsch.json", "r") as json_File:
     loadedJSON = json.load(json_File)
@@ -51,3 +52,4 @@ clickingOnPixle("textField")
 sleep(1)
 clickingOnPixle("message") 
 sleep(1)
+press_and_release("strg+tab")
