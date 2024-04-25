@@ -3,10 +3,26 @@ from openBrowser import openBrowser1
 from pixelDetection import lookingForPixel
 from time import sleep
 from pyautogui import click
+import json
 
-Wunschpreis = 4600
-chrome_driver_path = "A:\\Desktop\\Scripts\\chromedriver.exe"
-url = "https://www.kleinanzeigen.de/s-preis:1200:/ninja-125/k0"
+with open("C:\\Users\\kevin\\Dropbox\\Kundenwunsch\\Wagner An- und Verkauf\\Kundenwunsch.json", "r") as json_File:
+    loadedJSON = json.load(json_File)
+
+
+def clickingOnPixle(object):
+    val = lookingForPixel(object)[1]
+    while val  < 0.90:
+        val = lookingForPixel(object)[1]
+        sleep(0.1)
+    x, y = lookingForPixel(object)[0]
+    click(x, y)            
+
+    
+
+
+Wunschpreis = loadedJSON["Wunschpreis"]
+chrome_driver_path = loadedJSON["chrome_driver_path"]
+url = loadedJSON["url"]
 count = 1
 
 #url, selectorType(text, href), selector,  chrome_driver_path
@@ -31,20 +47,7 @@ while price > Wunschpreis:
 
 urlHref = main(url,"href", currentURLfrommSelector,  chrome_driver_path)
 openBrowser1(urlHref)
+clickingOnPixle("textField")
 sleep(1)
-val = lookingForPixel("message")[1]
-while val < 0.90:
-    val = lookingForPixel("message")[1]
-    sleep(0.1)
-x, y = lookingForPixel("message")[0]
-click(x, y)            
-    
+clickingOnPixle("message") 
 sleep(1)
-while lookingForPixel("textField")[1] < 0.90:
-    lookingForPixel("textField")[1]
-    sleep(0.1)
-x, y = lookingForPixel("textField")[0]
-click(x, y)            
-    
-    
-    
