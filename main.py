@@ -48,8 +48,9 @@ while price > Wunschpreis:
 
 urlHref = main(url,"href", currentURLfrommSelector,  chrome_driver_path)
 openBrowser1(urlHref)
-clickingOnPixle("textField")
 sleep(1)
-clickingOnPixle("message") 
+clickingOnPixle("message")
+sleep(1)
+clickingOnPixle("textField") 
 sleep(1)
 press_and_release("strg+tab")
