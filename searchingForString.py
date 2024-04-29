@@ -30,9 +30,9 @@ def suche(element_css_selector, driver, typeElement):
         href = element.get_attribute('href')
 
         if typeElement == "text":
-            return element.text if element.text else "Element found, but it contains no data."
+            return element.text if element.text else False
         elif typeElement == "href":
-            return href if href else "Element gefunden, aber es enthält keine href-Adresse."
+            return href if href else False
         else:
             return "wrong type " + typeElement
     except Exception as e:

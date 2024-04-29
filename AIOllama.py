@@ -14,7 +14,7 @@ support = "[myTeam]Poppy vs [enemyTeam]Ashe"
 
 
 
-inputBeforeChat = f"""Schauspielere den Käufer des Artikels, der einen Artikel auf Kleinanzeigen kaufen möchte. Die bist freundlich, nciht aufdringlich, hälst dich kurz, schreibst, auf deutscher sprache aber professionell"""
+inputBeforeChat = f"""troubleshoot"""
 
 
 
@@ -35,7 +35,7 @@ def ollamaGPT(inputBeforeChat):
     print(message)
     # Call the chat method with the model and message
     response = client.chat("llama3:8b", message)
-
+    print(response)
     # Print the response
     return response["message"]["content"]
 
@@ -47,3 +47,4 @@ def ollamaGPT(inputBeforeChat):
 
 if __name__ == "__main__":
     ollamaGPT(inputBeforeChat)
+    
