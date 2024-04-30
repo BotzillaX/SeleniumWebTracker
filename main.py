@@ -12,7 +12,7 @@ with open("C:\\Users\\kevin\\Dropbox\\Kundenwunsch\\Wagner An- und Verkauf\\Kund
     loadedJSON = json.load(json_File)
 
 
-def clickingOnPixle(object):
+def clickingOnPixle(object): #clicking on nachrichten and text
     val = lookingForPixel(object)[1]
     while val  < 0.90:
         val = lookingForPixel(object)[1]
